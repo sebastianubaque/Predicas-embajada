@@ -4,704 +4,655 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Predica Embajada</title>
+  <link rel="icon" type="image/jpeg" href="https://res.cloudinary.com/duxzwcnfc/image/upload/v1774722585/327288669_1456038698258006_8295051166606127585_n_yczmp8.jpg">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #1d2939;
-      --surface: #1A1108;
-      --surface2: #241810;
-      --border: rgba(198,149,59,0.18);
-      --gold: #C6953B;
-      --gold-light: #E8B55A;
-      --gold-dim: rgba(198,149,59,0.12);
-      --text: #F5EDE0;
-      --text-muted: #9C8B78;
-      --text-dim: #6B5A49;
-      --red: #E53E3E;
-      --white: #FAF6F0;
-      --radius: 16px;
-      --radius-sm: 10px;
-      --nav-h: 64px;
-      --bottom-h: 68px;
-      --font: 'Poppins', sans-serif;
+      --bg:         #111c2a;
+      --surface:    #1d2939;
+      --surface2:   #243347;
+      --surface3:   #2c3d56;
+      --border:     rgba(177,165,115,0.18);
+      --border2:    rgba(177,165,115,0.32);
+      --accent:     #b1a573;
+      --accent-dim: rgba(177,165,115,0.13);
+      --accent-lt:  #cfc08a;
+      --text:       #ffffff;
+      --text-muted: rgba(255,255,255,0.55);
+      --text-dim:   rgba(255,255,255,0.28);
+      --red:        #e05555;
+      --green:      #4caf7d;
+      --radius:     16px;
+      --radius-sm:  10px;
+      --nav-h:      64px;
+      --bottom-h:   70px;
+      --font:       'Poppins', sans-serif;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     html, body {
-      height: 100%;
       font-family: var(--font);
       background: var(--bg);
       color: var(--text);
       overflow-x: hidden;
     }
 
-    body {
-      padding-bottom: var(--bottom-h);
-    }
+    body { padding-bottom: var(--bottom-h); }
 
-    /* Scrollbar */
     ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 2px; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
 
-    /* ─── ANIMATIONS ─────────────────────────────── */
-    @keyframes fadeUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
-    @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-    @keyframes slideDown { from { opacity:0; transform:translateY(-8px); } to { opacity:1; transform:translateY(0); } }
-    @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:.5;} }
-    @keyframes toastIn { from{opacity:0;transform:translateY(-10px);} to{opacity:1;transform:translateY(0);} }
+    /* ── ANIMATIONS ───────────────────────── */
+    @keyframes fadeUp   { from{opacity:0;transform:translateY(18px);}  to{opacity:1;transform:translateY(0);} }
+    @keyframes fadeIn   { from{opacity:0;} to{opacity:1;} }
+    @keyframes pulse    { 0%,100%{opacity:1;} 50%{opacity:.35;} }
+    @keyframes toastIn  { from{opacity:0;transform:translateY(-10px);} to{opacity:1;transform:translateY(0);} }
     @keyframes toastOut { from{opacity:1;} to{opacity:0;} }
-    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes zoomIn   { from{opacity:0;transform:scale(.93);} to{opacity:1;transform:scale(1);} }
+    @keyframes slideUp  { from{opacity:0;transform:translateY(32px);} to{opacity:1;transform:translateY(0);} }
 
-    .fade-up { animation: fadeUp .45s ease both; }
-    .fade-up-1 { animation: fadeUp .45s .06s ease both; }
-    .fade-up-2 { animation: fadeUp .45s .12s ease both; }
-    .fade-up-3 { animation: fadeUp .45s .18s ease both; }
-    .fade-in { animation: fadeIn .3s ease both; }
+    .fade-up   { animation: fadeUp .4s ease both; }
+    .fade-up-1 { animation: fadeUp .4s .07s ease both; }
+    .fade-up-2 { animation: fadeUp .4s .14s ease both; }
+    .fade-up-3 { animation: fadeUp .4s .21s ease both; }
 
-    /* ─── TOP NAV ────────────────────────────────── */
+    /* ── TOP NAV ──────────────────────────── */
     #top-nav {
       position: sticky; top: 0; z-index: 50;
       height: var(--nav-h);
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0 20px;
-      background: rgba(15,10,6,0.88);
+      padding: 0 18px;
+      background: rgba(29,41,57,0.93);
       backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
     }
 
-    .nav-brand {
-      display: flex; align-items: center; gap: 10px;
-    }
+    .nav-brand { display: flex; align-items: center; gap: 10px; }
 
     .nav-logo {
-      width: 36px; height: 36px;
-      background: linear-gradient(135deg, var(--gold), var(--gold-light));
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 16px;
-      flex-shrink: 0;
+      width: 40px; height: 40px; border-radius: 50%;
+      overflow: hidden; flex-shrink: 0;
+      border: 2px solid var(--accent);
+      box-shadow: 0 0 0 4px rgba(177,165,115,0.14);
     }
 
-    .nav-title {
-      font-size: 17px; font-weight: 700;
-      background: linear-gradient(135deg, var(--gold-light), var(--gold));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      letter-spacing: -0.3px;
+    .nav-logo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .nav-title-main { font-size: 15px; font-weight: 700; color: var(--text); letter-spacing: -0.2px; }
+    .nav-title-sub  { font-size: 10px; font-weight: 500; color: var(--accent); letter-spacing: 0.4px; }
+
+    .admin-badge {
+      font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px;
+      background: var(--accent-dim); color: var(--accent);
+      border: 1px solid var(--border2); padding: 3px 10px; border-radius: 20px;
+      display: none;
     }
 
-    .nav-badge {
-      font-size: 11px; font-weight: 600;
-      background: var(--gold-dim);
-      color: var(--gold);
-      border: 1px solid var(--border);
-      padding: 2px 8px; border-radius: 20px;
-    }
-
-    /* ─── BOTTOM NAV ─────────────────────────────── */
+    /* ── BOTTOM NAV ───────────────────────── */
     #bottom-nav {
       position: fixed; bottom: 0; left: 0; right: 0; z-index: 50;
       height: var(--bottom-h);
       display: flex;
-      background: rgba(26,17,8,0.96);
-      backdrop-filter: blur(20px);
+      background: rgba(29,41,57,0.97);
+      backdrop-filter: blur(24px);
       border-top: 1px solid var(--border);
       padding-bottom: env(safe-area-inset-bottom);
     }
 
     .nav-btn {
-      flex: 1;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 4px;
-      background: none; border: none; cursor: pointer;
-      color: var(--text-dim);
-      font-family: var(--font);
-      font-size: 10px; font-weight: 500;
-      transition: color .2s;
-      padding: 8px 4px;
-      -webkit-tap-highlight-color: transparent;
+      flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 4px; background: none; border: none; cursor: pointer;
+      color: var(--text-dim); font-family: var(--font); font-size: 10px; font-weight: 500;
+      transition: color .2s; -webkit-tap-highlight-color: transparent;
     }
 
-    .nav-btn svg { width: 20px; height: 20px; transition: transform .2s; }
-    .nav-btn.active { color: var(--gold); }
-    .nav-btn.active svg { transform: scale(1.1); }
+    .nav-btn svg { width: 22px; height: 22px; transition: transform .18s; }
+    .nav-btn.active { color: var(--accent); }
+    .nav-btn.active svg { transform: scale(1.12); }
+    .nav-btn:active svg { transform: scale(0.88); }
 
-    .nav-btn:active svg { transform: scale(0.9); }
+    /* ── VIEWS ────────────────────────────── */
+    .view { display: none; min-height: calc(100dvh - var(--nav-h) - var(--bottom-h)); }
+    .view.active { display: block; animation: fadeIn .22s ease; }
 
-    /* ─── VIEWS ──────────────────────────────────── */
-    .view { display: none; min-height: calc(100vh - var(--nav-h) - var(--bottom-h)); }
-    .view.active { display: block; animation: fadeIn .3s ease; }
+    .container { max-width: 700px; margin: 0 auto; padding: 20px 16px 12px; }
 
-    .container { max-width: 680px; margin: 0 auto; padding: 20px 16px; }
-
-    /* ─── HERO ───────────────────────────────────── */
+    /* ── HERO ─────────────────────────────── */
     .hero {
-      padding: 32px 20px 24px;
-      text-align: center;
+      padding: 26px 20px 22px; text-align: center;
+      background: linear-gradient(180deg,rgba(177,165,115,0.08) 0%,transparent 100%);
+      border-bottom: 1px solid var(--border);
     }
 
     .hero-eyebrow {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 12px;
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 10px;
     }
 
     .hero-eyebrow::before, .hero-eyebrow::after {
-      content: ''; display: block; width: 20px; height: 1px; background: var(--gold-dim);
+      content: ''; display: block; width: 22px; height: 1px; background: var(--border2);
     }
 
     .hero h1 {
-      font-size: clamp(26px, 7vw, 36px);
-      font-weight: 800; line-height: 1.15; letter-spacing: -0.5px;
-      color: var(--text); margin-bottom: 8px;
+      font-size: clamp(23px, 6.5vw, 33px); font-weight: 800;
+      line-height: 1.18; letter-spacing: -0.4px; color: var(--text); margin-bottom: 6px;
     }
 
-    .hero h1 span {
-      background: linear-gradient(135deg, var(--gold-light), var(--gold));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }
+    .hero h1 em { font-style: normal; color: var(--accent); }
+    .hero p { font-size: 13px; color: var(--text-muted); }
 
-    .hero p {
-      font-size: 14px; color: var(--text-muted); font-weight: 400;
-    }
-
-    /* ─── SECTION HEADING ────────────────────────── */
-    .section-heading {
-      display: flex; align-items: center; justify-content: space-between;
-      margin-bottom: 16px;
-    }
+    /* ── SECTION HEADING ──────────────────── */
+    .section-heading { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
 
     .section-title {
-      font-size: 16px; font-weight: 700; color: var(--text);
+      font-size: 15px; font-weight: 700; color: var(--text);
       display: flex; align-items: center; gap: 8px;
     }
 
     .section-title::before {
-      content: ''; display: block; width: 3px; height: 18px;
-      background: linear-gradient(180deg, var(--gold-light), var(--gold));
-      border-radius: 2px;
+      content: ''; width: 3px; height: 17px;
+      background: linear-gradient(180deg, var(--accent-lt), var(--accent));
+      border-radius: 2px; flex-shrink: 0;
     }
 
     .view-all-btn {
-      font-size: 12px; font-weight: 600; color: var(--gold);
+      font-size: 12px; font-weight: 600; color: var(--accent);
       background: none; border: none; cursor: pointer; font-family: var(--font);
       -webkit-tap-highlight-color: transparent;
     }
 
-    /* ─── FEATURED CARD ──────────────────────────── */
+    /* ── FEATURED CARD ────────────────────── */
     .featured-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      margin-bottom: 28px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden; margin-bottom: 28px;
+    }
+
+    .featured-cover {
+      width: 100%; height: 200px; object-fit: cover; display: block;
+      background: var(--surface2);
+    }
+
+    .featured-cover-ph {
+      width: 100%; height: 150px; background: var(--surface2);
+      display: flex; align-items: center; justify-content: center;
     }
 
     .featured-badge {
       display: inline-flex; align-items: center; gap: 5px;
-      background: linear-gradient(135deg, var(--gold), var(--gold-light));
-      color: #1d2939;
-      font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
-      padding: 5px 12px; border-radius: 0 0 12px 0;
+      background: linear-gradient(90deg, var(--accent), var(--accent-lt));
+      color: var(--surface); font-size: 9px; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 1.2px;
+      padding: 5px 14px; border-radius: 0 0 10px 0;
     }
 
-    .featured-body { padding: 18px 18px 20px; }
+    .featured-body { padding: 14px 16px 18px; }
+    .featured-topic { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: var(--accent); margin-bottom: 4px; }
+    .featured-title { font-size: 19px; font-weight: 700; color: var(--text); line-height: 1.28; margin-bottom: 4px; }
+    .featured-date  { font-size: 12px; color: var(--text-muted); margin-bottom: 14px; }
 
-    .featured-topic {
-      font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
-      color: var(--gold); margin-bottom: 6px;
-    }
+    /* ── SERMON CARDS ─────────────────────── */
+    .cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 
-    .featured-title {
-      font-size: 20px; font-weight: 700; color: var(--text);
-      line-height: 1.3; margin-bottom: 6px;
-    }
-
-    .featured-date {
-      font-size: 12px; color: var(--text-muted); margin-bottom: 14px;
-    }
-
-    /* ─── AUDIO PLAYER ───────────────────────────── */
-    .player-wrap {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      overflow: hidden;
-      margin-bottom: 14px;
-      position: relative;
-    }
-
-    .player-loading {
-      position: absolute; inset: 0;
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-      color: var(--text-dim); font-size: 12px;
-      background: var(--surface2);
-      pointer-events: none;
-      z-index: 1;
-      transition: opacity .4s;
-    }
-
-    .player-loading-dot {
-      width: 6px; height: 6px; border-radius: 50%;
-      background: var(--gold-dim); border: 1px solid var(--border);
-      animation: pulse 1.2s ease infinite;
-    }
-
-    .player-loading-dot:nth-child(2) { animation-delay: .2s; }
-    .player-loading-dot:nth-child(3) { animation-delay: .4s; }
-
-    .player-wrap iframe {
-      display: block; width: 100%; height: 160px; border: none;
-      position: relative; z-index: 2;
-    }
-
-    .player-wrap.detail-player iframe {
-      height: 200px;
-    }
-
-    .player-open-link {
-      display: flex; align-items: center; justify-content: center; gap: 6px;
-      padding: 9px 14px;
-      background: var(--surface2);
-      border-top: 1px solid var(--border);
-      color: var(--text-dim); font-size: 11px; font-weight: 500;
-      text-decoration: none;
-      transition: color .2s;
-    }
-
-    .player-open-link:hover { color: var(--gold); }
-
-    /* ─── SERMON CARDS ───────────────────────────── */
-    .cards-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-    }
-
-    @media (min-width: 500px) {
-      .cards-grid { grid-template-columns: 1fr 1fr; }
-    }
+    @media (max-width: 360px) { .cards-grid { grid-template-columns: 1fr; } }
 
     .sermon-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 16px;
-      cursor: pointer;
-      transition: transform .2s, border-color .2s, background .2s;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden; cursor: pointer;
+      transition: border-color .2s, transform .14s;
       -webkit-tap-highlight-color: transparent;
-      position: relative; overflow: hidden;
     }
 
-    .sermon-card::after {
-      content: '';
-      position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-      opacity: 0; transition: opacity .2s;
-    }
+    .sermon-card:active { transform: scale(0.97); }
+    .sermon-card:hover  { border-color: var(--border2); }
 
-    .sermon-card:active { transform: scale(0.98); background: var(--surface2); }
-    .sermon-card:hover { border-color: rgba(198,149,59,0.35); }
-    .sermon-card:hover::after { opacity: 1; }
+    .card-cover    { width: 100%; height: 110px; object-fit: cover; display: block; background: var(--surface2); }
+    .card-cover-ph { width: 100%; height: 110px; background: var(--surface2); display: flex; align-items: center; justify-content: center; }
+    .card-body     { padding: 10px 11px 13px; }
 
     .card-topic {
-      display: inline-block;
-      font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px;
-      color: var(--gold);
-      background: var(--gold-dim);
-      border: 1px solid var(--border);
-      padding: 2px 8px; border-radius: 20px;
-      margin-bottom: 8px;
+      display: inline-block; font-size: 9px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.7px; color: var(--accent); background: var(--accent-dim);
+      border: 1px solid var(--border); padding: 2px 7px; border-radius: 20px; margin-bottom: 5px;
     }
 
     .card-title {
-      font-size: 14px; font-weight: 600; color: var(--text);
-      line-height: 1.4; margin-bottom: 6px;
+      font-size: 13px; font-weight: 600; color: var(--text); line-height: 1.38; margin-bottom: 5px;
       display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
     }
 
-    .card-date {
-      font-size: 11px; color: var(--text-dim);
-      display: flex; align-items: center; gap: 4px;
-    }
+    .card-date { font-size: 11px; color: var(--text-dim); display: flex; align-items: center; gap: 4px; }
 
-    /* ─── SEARCH & FILTERS ───────────────────────── */
-    .search-wrap {
-      position: relative; margin-bottom: 12px;
-    }
+    /* ── SEARCH & FILTERS ─────────────────── */
+    .search-wrap { position: relative; margin-bottom: 10px; }
 
     .search-icon {
-      position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+      position: absolute; left: 13px; top: 50%; transform: translateY(-50%);
       color: var(--text-dim); pointer-events: none;
     }
 
     .search-input {
-      width: 100%; padding: 12px 14px 12px 42px;
+      width: 100%; padding: 12px 14px 12px 40px;
       background: var(--surface); border: 1px solid var(--border);
       border-radius: var(--radius-sm); color: var(--text);
-      font-family: var(--font); font-size: 14px;
-      transition: border-color .2s;
-      -webkit-appearance: none;
+      font-family: var(--font); font-size: 14px; transition: border-color .2s;
     }
 
     .search-input::placeholder { color: var(--text-dim); }
-    .search-input:focus { outline: none; border-color: rgba(198,149,59,0.5); }
+    .search-input:focus { outline: none; border-color: var(--border2); }
 
-    .filters-row {
-      display: flex; gap: 8px; margin-bottom: 20px;
-    }
+    .filters-row { display: flex; gap: 8px; margin-bottom: 18px; }
 
     .filter-select, .filter-date {
-      flex: 1;
-      padding: 10px 12px;
+      flex: 1; padding: 10px 12px;
       background: var(--surface); border: 1px solid var(--border);
       border-radius: var(--radius-sm); color: var(--text);
-      font-family: var(--font); font-size: 13px;
-      -webkit-appearance: none;
-      appearance: none;
+      font-family: var(--font); font-size: 13px; -webkit-appearance: none;
       transition: border-color .2s;
     }
 
-    .filter-select:focus, .filter-date:focus { outline: none; border-color: rgba(198,149,59,0.5); }
-    .filter-select option { background: var(--surface); }
-    input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.5) sepia(1) saturate(3) hue-rotate(5deg); }
+    .filter-select:focus, .filter-date:focus { outline: none; border-color: var(--border2); }
+    .filter-select option { background: var(--surface2); }
+    input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.7) sepia(0.4) saturate(2) hue-rotate(15deg); }
 
-    /* ─── DETAIL VIEW ────────────────────────────── */
-    .back-btn {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: none; border: none; cursor: pointer;
-      color: var(--gold); font-family: var(--font); font-size: 13px; font-weight: 600;
-      padding: 0; margin-bottom: 20px;
+    /* ── AUDIO PLAYER ─────────────────────── */
+    .player-wrap {
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); overflow: hidden;
+      margin-bottom: 14px; position: relative;
+    }
+
+    .player-loading {
+      position: absolute; inset: 0; z-index: 1;
+      display: flex; align-items: center; justify-content: center; gap: 7px;
+      background: var(--surface2); color: var(--text-dim); font-size: 12px;
+      pointer-events: none; transition: opacity .4s;
+    }
+
+    .player-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--border2); animation: pulse 1.2s ease infinite; }
+    .player-dot:nth-child(2) { animation-delay: .2s; }
+    .player-dot:nth-child(3) { animation-delay: .4s; }
+
+    .player-wrap iframe { display: block; width: 100%; height: 160px; border: none; position: relative; z-index: 2; }
+    .player-wrap.tall   iframe { height: 200px; }
+
+    .player-open-link {
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+      padding: 9px; background: var(--surface2); border-top: 1px solid var(--border);
+      color: var(--text-dim); font-size: 11px; font-weight: 500; text-decoration: none;
+      transition: color .2s; position: relative; z-index: 2;
+    }
+
+    .player-open-link:hover { color: var(--accent); }
+
+    /* ── PHOTO GALLERY ────────────────────── */
+    .gallery-section { margin-bottom: 18px; }
+
+    .gallery-label {
+      font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+      color: var(--text-muted); margin-bottom: 10px;
+      display: flex; align-items: center; gap: 6px;
+    }
+
+    .gallery-label::before { content:''; width:3px; height:14px; background: var(--accent); border-radius:2px; }
+
+    .gallery-scroll {
+      display: flex; gap: 10px; overflow-x: auto; padding-bottom: 4px;
+      -webkit-overflow-scrolling: touch; scroll-snap-type: x mandatory;
+    }
+
+    .gallery-scroll::-webkit-scrollbar { height: 3px; }
+    .gallery-scroll::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+
+    .gallery-thumb {
+      flex-shrink: 0; width: 130px; height: 96px;
+      border-radius: var(--radius-sm); overflow: hidden;
+      border: 1px solid var(--border); cursor: pointer;
+      scroll-snap-align: start; transition: border-color .2s;
+    }
+
+    .gallery-thumb:hover { border-color: var(--border2); }
+    .gallery-thumb img   { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* ── LIGHTBOX ─────────────────────────── */
+    #lightbox {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(0,0,0,0.93);
+      display: none; flex-direction: column; align-items: center; justify-content: center;
+      padding: 20px;
+    }
+
+    #lightbox.open { display: flex; animation: fadeIn .2s ease; }
+
+    #lightbox-img {
+      max-width: 100%; max-height: 78vh;
+      border-radius: var(--radius-sm); object-fit: contain;
+      animation: zoomIn .2s ease;
+    }
+
+    #lightbox-close {
+      position: absolute; top: 16px; right: 16px;
+      background: rgba(255,255,255,0.12); border: none; border-radius: 50%;
+      width: 40px; height: 40px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; color: white;
       -webkit-tap-highlight-color: transparent;
     }
 
-    .detail-topic {
-      display: inline-block;
-      font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
-      color: var(--gold);
-      background: var(--gold-dim);
-      border: 1px solid var(--border);
-      padding: 3px 10px; border-radius: 20px;
-      margin-bottom: 12px;
+    #lightbox-counter { margin-top: 12px; font-size: 12px; color: rgba(255,255,255,0.45); }
+
+    #lightbox-nav { display: flex; gap: 14px; margin-top: 14px; }
+
+    .lb-btn {
+      background: rgba(255,255,255,0.11); border: none; border-radius: 50%;
+      width: 44px; height: 44px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; color: white;
+      transition: background .2s; -webkit-tap-highlight-color: transparent;
     }
 
-    .detail-title {
-      font-size: clamp(20px, 5vw, 28px); font-weight: 800; color: var(--text);
-      line-height: 1.25; margin-bottom: 8px;
+    .lb-btn:hover { background: rgba(255,255,255,0.22); }
+
+    /* ── DETAIL VIEW ──────────────────────── */
+    .back-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: none; border: none; cursor: pointer;
+      color: var(--accent); font-family: var(--font); font-size: 13px; font-weight: 600;
+      padding: 0; margin-bottom: 16px; -webkit-tap-highlight-color: transparent;
     }
 
-    .detail-meta {
-      font-size: 13px; color: var(--text-muted); margin-bottom: 20px;
-    }
+    .detail-cover  { width: 100%; max-height: 230px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; cursor: pointer; }
+    .detail-topic  { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: var(--accent); margin-bottom: 7px; }
+    .detail-title  { font-size: clamp(20px, 5vw, 26px); font-weight: 800; color: var(--text); line-height: 1.2; margin-bottom: 7px; }
+    .detail-meta   { font-size: 13px; color: var(--text-muted); margin-bottom: 16px; }
 
-    .attachments-section { margin-top: 20px; }
-
-    .attach-label {
-      font-size: 13px; font-weight: 600; color: var(--text-muted);
-      text-transform: uppercase; letter-spacing: 0.8px;
-      margin-bottom: 10px;
-    }
+    .attach-label { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 10px; }
 
     .attach-link {
-      display: flex; align-items: center; gap: 10px;
-      padding: 12px 14px;
+      display: flex; align-items: center; gap: 10px; padding: 12px 14px;
       background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius-sm); color: var(--gold);
+      border-radius: var(--radius-sm); color: var(--accent);
       text-decoration: none; font-size: 13px; font-weight: 500;
       margin-bottom: 8px; transition: background .2s;
     }
 
     .attach-link:hover { background: var(--surface2); }
 
-    /* ─── ADMIN VIEW ─────────────────────────────── */
-    .admin-header {
-      display: flex; align-items: center; justify-content: space-between;
-      margin-bottom: 20px;
-    }
-
-    .admin-title {
-      font-size: 20px; font-weight: 700; color: var(--text);
-    }
+    /* ── ADMIN ────────────────────────────── */
+    .admin-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+    .admin-title  { font-size: 19px; font-weight: 700; color: var(--text); }
 
     .btn-primary {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 10px 16px;
-      background: linear-gradient(135deg, var(--gold), var(--gold-light));
-      color: #1d2939;
+      display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px;
+      background: var(--accent); color: var(--surface);
       border: none; border-radius: var(--radius-sm);
       font-family: var(--font); font-size: 13px; font-weight: 700;
-      cursor: pointer; transition: opacity .2s, transform .15s;
+      cursor: pointer; transition: opacity .2s, transform .14s;
       -webkit-tap-highlight-color: transparent;
     }
 
     .btn-primary:active { transform: scale(0.97); opacity: 0.9; }
 
     .btn-ghost {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 10px 16px;
-      background: var(--surface); color: var(--text-muted);
+      display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px;
+      background: var(--surface2); color: var(--text-muted);
       border: 1px solid var(--border); border-radius: var(--radius-sm);
       font-family: var(--font); font-size: 13px; font-weight: 500;
       cursor: pointer; transition: background .2s, color .2s;
       -webkit-tap-highlight-color: transparent;
     }
 
-    .btn-ghost:active { background: var(--surface2); color: var(--text); }
+    .btn-ghost:active { background: var(--surface3); color: var(--text); }
 
     .admin-item {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 14px 16px;
+      display: flex; align-items: center; gap: 12px; padding: 11px 13px;
       background: var(--surface); border: 1px solid var(--border);
       border-radius: var(--radius-sm); margin-bottom: 10px;
     }
 
-    .admin-item-info { flex: 1; min-width: 0; }
-    .admin-item-title { font-size: 14px; font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 2px; }
-    .admin-item-sub { font-size: 12px; color: var(--text-dim); }
-
-    .admin-item-actions { display: flex; gap: 6px; margin-left: 12px; }
-
-    .icon-btn {
-      width: 36px; height: 36px;
+    .admin-item-thumb {
+      width: 46px; height: 46px; border-radius: 8px; overflow: hidden;
+      background: var(--surface2); flex-shrink: 0; border: 1px solid var(--border);
       display: flex; align-items: center; justify-content: center;
-      background: none; border: 1px solid var(--border);
-      border-radius: 8px; cursor: pointer;
-      transition: background .2s, border-color .2s;
-      -webkit-tap-highlight-color: transparent;
     }
 
-    .icon-btn.edit { color: var(--gold); }
-    .icon-btn.del { color: var(--red); }
+    .admin-item-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .admin-item-info { flex: 1; min-width: 0; }
+    .admin-item-title { font-size: 13px; font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 2px; }
+    .admin-item-sub   { font-size: 11px; color: var(--text-dim); }
+
+    .admin-item-actions { display: flex; gap: 6px; flex-shrink: 0; }
+
+    .icon-btn {
+      width: 33px; height: 33px; display: flex; align-items: center; justify-content: center;
+      background: none; border: 1px solid var(--border); border-radius: 8px; cursor: pointer;
+      transition: background .2s; -webkit-tap-highlight-color: transparent;
+    }
+
+    .icon-btn.edit { color: var(--accent); }
+    .icon-btn.del  { color: var(--red); }
     .icon-btn:active { background: var(--surface2); }
 
-    /* Admin tabs */
     .admin-tabs {
-      display: flex; gap: 4px; margin-bottom: 20px;
+      display: flex; gap: 4px; margin-bottom: 16px;
       background: var(--surface); border-radius: var(--radius-sm); padding: 4px;
     }
 
     .admin-tab {
-      flex: 1; padding: 9px 12px; border: none; background: none;
+      flex: 1; padding: 9px; border: none; background: none;
       font-family: var(--font); font-size: 13px; font-weight: 500;
       color: var(--text-muted); border-radius: 8px; cursor: pointer;
-      transition: background .2s, color .2s;
-      -webkit-tap-highlight-color: transparent;
+      transition: background .2s, color .2s; -webkit-tap-highlight-color: transparent;
     }
 
-    .admin-tab.active { background: var(--gold-dim); color: var(--gold); font-weight: 600; }
+    .admin-tab.active { background: var(--accent-dim); color: var(--accent); font-weight: 600; }
 
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
 
-    /* Settings */
-    .settings-card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 20px; margin-bottom: 14px;
-    }
+    .stats-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
 
-    .settings-card h3 {
-      font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 4px;
-    }
+    .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 15px; }
+    .stat-value { font-size: 27px; font-weight: 800; color: var(--accent); }
+    .stat-label { font-size: 11px; color: var(--text-muted); font-weight: 500; }
 
-    .settings-card p {
-      font-size: 12px; color: var(--text-muted); margin-bottom: 16px;
-    }
+    .settings-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; margin-bottom: 14px; }
+    .settings-card h3 { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .settings-card p  { font-size: 12px; color: var(--text-muted); margin-bottom: 16px; }
 
-    /* ─── FORM INPUTS ────────────────────────────── */
-    .field { margin-bottom: 14px; }
-    .field label { display: block; font-size: 12px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 6px; }
+    /* ── FORM FIELDS ──────────────────────── */
+    .field { margin-bottom: 13px; }
+
+    .field label {
+      display: block; font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.7px; color: var(--text-muted); margin-bottom: 6px;
+    }
 
     .field input, .field textarea, .field select {
       width: 100%; padding: 12px 14px;
       background: var(--surface2); border: 1px solid var(--border);
       border-radius: var(--radius-sm); color: var(--text);
       font-family: var(--font); font-size: 14px;
-      transition: border-color .2s;
-      -webkit-appearance: none;
+      transition: border-color .2s; -webkit-appearance: none;
     }
 
-    .field input:focus, .field textarea:focus, .field select:focus {
-      outline: none; border-color: rgba(198,149,59,0.6);
-    }
-
-    .field textarea { resize: vertical; min-height: 72px; }
+    .field input:focus, .field textarea:focus, .field select:focus { outline: none; border-color: var(--border2); }
     .field input::placeholder, .field textarea::placeholder { color: var(--text-dim); }
-    .field select option { background: #1A1108; }
+    .field textarea { resize: vertical; min-height: 68px; }
+    .field select option { background: var(--surface2); }
 
-    /* ─── MODALS ─────────────────────────────────── */
+    /* Photo upload */
+    .photo-upload-area {
+      border: 2px dashed var(--border2); border-radius: var(--radius-sm);
+      padding: 18px; text-align: center; cursor: pointer;
+      background: var(--surface2); transition: border-color .2s, background .2s;
+    }
+
+    .photo-upload-area:hover { border-color: var(--accent); background: var(--accent-dim); }
+    .photo-upload-area input { display: none; }
+    .photo-upload-icon { font-size: 22px; margin-bottom: 5px; }
+    .photo-upload-text { font-size: 12px; color: var(--text-muted); }
+    .photo-upload-hint { font-size: 11px; color: var(--text-dim); margin-top: 3px; }
+
+    .photo-preview-list { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+
+    .photo-preview-item {
+      position: relative; width: 68px; height: 68px;
+      border-radius: 8px; overflow: hidden; border: 1px solid var(--border);
+    }
+
+    .photo-preview-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .photo-preview-del {
+      position: absolute; top: 2px; right: 2px;
+      width: 18px; height: 18px; border-radius: 50%;
+      background: rgba(0,0,0,0.72); border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-size: 10px; line-height: 1; padding: 0;
+    }
+
+    .photo-preview-item.is-cover::after {
+      content: '★'; position: absolute; bottom: 2px; left: 4px;
+      font-size: 11px; color: var(--accent); text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    }
+
+    /* Pass wrap */
+    .pass-wrap { position: relative; }
+    .pass-wrap input { padding-right: 44px; }
+    .pass-toggle {
+      position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+      background: none; border: none; cursor: pointer; color: var(--text-dim);
+      font-size: 16px; padding: 4px; line-height: 1;
+    }
+
+    /* ── MODALS ───────────────────────────── */
     .modal-overlay {
       position: fixed; inset: 0; z-index: 80;
-      background: rgba(0,0,0,0.7); backdrop-filter: blur(4px);
+      background: rgba(0,0,0,0.72); backdrop-filter: blur(4px);
       display: flex; align-items: flex-end; justify-content: center;
-      padding: 0;
-      animation: fadeIn .2s ease;
+      animation: fadeIn .18s ease;
     }
 
     .modal-sheet {
-      width: 100%; max-width: 640px;
+      width: 100%; max-width: 680px;
       background: var(--surface);
-      border-radius: 24px 24px 0 0;
-      padding: 20px 20px calc(20px + env(safe-area-inset-bottom));
-      max-height: 92vh;
-      overflow-y: auto;
-      animation: fadeUp .3s ease;
+      border-radius: 22px 22px 0 0;
+      padding: 16px 16px calc(16px + env(safe-area-inset-bottom));
+      max-height: 94vh; overflow-y: auto;
+      animation: slideUp .28s ease;
     }
 
-    .modal-handle {
-      width: 40px; height: 4px;
-      background: var(--border); border-radius: 2px;
-      margin: 0 auto 20px;
-    }
-
-    .modal-title {
-      font-size: 18px; font-weight: 700; color: var(--text);
-      margin-bottom: 18px;
-    }
-
-    .modal-sm {
-      width: 100%; max-width: 340px;
-      background: var(--surface);
-      border-radius: var(--radius);
-      padding: 24px 20px;
-      animation: fadeUp .3s ease;
-    }
+    .modal-handle { width: 36px; height: 4px; background: var(--border2); border-radius: 2px; margin: 0 auto 16px; }
+    .modal-title  { font-size: 17px; font-weight: 700; color: var(--text); }
 
     .modal-sm-overlay {
-      position: fixed; inset: 0; z-index: 80;
-      background: rgba(0,0,0,0.75); backdrop-filter: blur(4px);
-      display: flex; align-items: center; justify-content: center;
-      padding: 20px;
-      animation: fadeIn .2s ease;
+      position: fixed; inset: 0; z-index: 90;
+      background: rgba(0,0,0,0.76); backdrop-filter: blur(4px);
+      display: flex; align-items: center; justify-content: center; padding: 20px;
+      animation: fadeIn .18s ease;
     }
 
-    /* ─── ALERT / ERROR ──────────────────────────── */
-    .error-box {
-      background: rgba(229,62,62,0.12); border: 1px solid rgba(229,62,62,0.3);
-      border-radius: var(--radius-sm); padding: 10px 14px;
-      font-size: 13px; color: #FC8181; margin-bottom: 12px;
-      display: none;
-    }
+    .modal-sm { width: 100%; max-width: 310px; background: var(--surface); border-radius: var(--radius); padding: 22px 18px; animation: zoomIn .2s ease; }
 
-    /* ─── TOAST ──────────────────────────────────── */
+    /* Error / success */
+    .error-box   { background: rgba(224,85,85,0.12); border:1px solid rgba(224,85,85,0.3);   border-radius:var(--radius-sm); padding:10px 13px; font-size:13px; color:#fc8181; margin-bottom:12px; display:none; }
+    .success-box { background: rgba(76,175,125,0.12); border:1px solid rgba(76,175,125,0.3); border-radius:var(--radius-sm); padding:10px 13px; font-size:13px; color:#68d391; margin-bottom:12px; display:none; }
+
+    /* ── TOAST ────────────────────────────── */
     #toast-container {
-      position: fixed; top: calc(var(--nav-h) + 12px); right: 16px; left: 16px;
-      z-index: 200; display: flex; flex-direction: column; gap: 8px;
-      align-items: center; pointer-events: none;
+      position: fixed; top: calc(var(--nav-h) + 10px); right: 0; left: 0; z-index: 200;
+      display: flex; flex-direction: column; align-items: center; gap: 8px; pointer-events: none;
     }
 
     .toast {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 11px 18px; border-radius: 100px;
-      font-size: 13px; font-weight: 600;
-      background: var(--gold); color: #1d2939;
+      display: inline-flex; align-items: center; gap: 7px; padding: 10px 18px;
+      border-radius: 100px; font-size: 13px; font-weight: 600;
+      background: var(--accent); color: var(--surface);
       box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-      animation: toastIn .3s ease, toastOut .3s ease 2.7s both;
+      animation: toastIn .28s ease, toastOut .28s ease 2.72s both;
     }
 
-    /* ─── LOGIN VIEW ─────────────────────────────── */
+    /* ── LOGIN ────────────────────────────── */
     #view-login {
-      display: none;
-      min-height: calc(100vh - var(--nav-h) - var(--bottom-h));
-      align-items: center; justify-content: center;
-      padding: 20px;
+      display: none; min-height: calc(100dvh - var(--nav-h) - var(--bottom-h));
+      align-items: center; justify-content: center; padding: 20px;
     }
 
     #view-login.active { display: flex; }
 
     .login-card {
-      width: 100%; max-width: 360px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 32px 24px;
-      text-align: center;
-    }
-
-    .login-icon {
-      width: 64px; height: 64px;
-      background: var(--gold-dim);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 20px;
-    }
-
-    .login-title { font-size: 20px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
-    .login-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 24px; }
-
-    /* ─── EMPTY STATES ───────────────────────────── */
-    .empty-state {
-      text-align: center; padding: 48px 20px;
-    }
-
-    .empty-icon {
-      font-size: 40px; margin-bottom: 12px; opacity: 0.5;
-    }
-
-    .empty-title { font-size: 16px; font-weight: 600; color: var(--text-muted); margin-bottom: 6px; }
-    .empty-sub { font-size: 13px; color: var(--text-dim); }
-
-    /* ─── DIVIDER ────────────────────────────────── */
-    .divider {
-      height: 1px; background: var(--border); margin: 20px 0;
-    }
-
-    /* ─── STATS ROW ──────────────────────────────── */
-    .stats-row {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 10px; margin-bottom: 20px;
-    }
-
-    .stat-card {
+      width: 100%; max-width: 330px;
       background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius-sm); padding: 16px;
+      border-radius: var(--radius); padding: 30px 22px; text-align: center;
     }
 
-    .stat-value { font-size: 28px; font-weight: 800; color: var(--gold); }
-    .stat-label { font-size: 11px; color: var(--text-muted); font-weight: 500; }
-
-    /* ─── PASSWORD FIELD ─────────────────────────── */
-    .pass-wrap { position: relative; }
-    .pass-wrap input { padding-right: 42px; }
-    .pass-toggle {
-      position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
-      background: none; border: none; cursor: pointer; color: var(--text-dim);
-      padding: 4px;
+    .login-logo {
+      width: 72px; height: 72px; border-radius: 50%; overflow: hidden;
+      border: 3px solid var(--accent); margin: 0 auto 16px;
+      box-shadow: 0 0 0 5px rgba(177,165,115,0.15);
     }
+
+    .login-logo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .login-title { font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 5px; }
+    .login-sub   { font-size: 13px; color: var(--text-muted); margin-bottom: 20px; }
+
+    /* ── EMPTY ────────────────────────────── */
+    .empty-state { text-align: center; padding: 44px 20px; }
+    .empty-icon  { font-size: 34px; margin-bottom: 10px; opacity: 0.45; }
+    .empty-title { font-size: 15px; font-weight: 600; color: var(--text-muted); margin-bottom: 5px; }
+    .empty-sub   { font-size: 12px; color: var(--text-dim); }
   </style>
 </head>
 <body>
 
-<!-- ─── TOAST ──────────────────────────── -->
+<!-- TOAST -->
 <div id="toast-container"></div>
 
-<!-- ─── TOP NAV ────────────────────────── -->
+<!-- LIGHTBOX -->
+<div id="lightbox">
+  <button id="lightbox-close" onclick="closeLightbox()">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <img id="lightbox-img" src="" alt="">
+  <div id="lightbox-counter">1 / 1</div>
+  <div id="lightbox-nav">
+    <button class="lb-btn" onclick="lightboxMove(-1)">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button class="lb-btn" onclick="lightboxMove(1)">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- TOP NAV -->
 <nav id="top-nav">
   <div class="nav-brand">
-    <div class="nav-logo">🎙️</div>
-    <span class="nav-title">Predica Embajada</span>
+    <div class="nav-logo">
+      <img src="https://res.cloudinary.com/duxzwcnfc/image/upload/v1774722585/327288669_1456038698258006_8295051166606127585_n_yczmp8.jpg" alt="Logo Predica Embajada">
+    </div>
+    <div>
+      <div class="nav-title-main">Predica Embajada</div>
+      <div class="nav-title-sub">La Palabra que Transforma</div>
+    </div>
   </div>
-  <span class="nav-badge" id="admin-badge" style="display:none;">Admin</span>
+  <div id="admin-badge" class="admin-badge">Admin</div>
 </nav>
 
-<!-- ─── VIEWS ──────────────────────────── -->
-
-<!-- HOME -->
+<!-- ─── HOME ─────────────────────────────── -->
 <div class="view active" id="view-home">
   <div class="hero fade-up">
     <div class="hero-eyebrow">Bienvenido</div>
-    <h1>La <span>Palabra</span><br>que Transforma</h1>
-    <p>Escucha las predicas de Embajada</p>
+    <h1>Escucha la <em>Palabra</em><br>que Transforma</h1>
+    <p>Predicas de la Iglesia Embajada</p>
   </div>
   <div class="container">
-    <!-- Featured -->
     <div id="featured-wrap" style="display:none;" class="fade-up-1">
       <div class="section-heading">
         <span class="section-title">Última Predica</span>
       </div>
-      <div class="featured-card" id="featured-card"></div>
+      <div id="featured-card" class="featured-card"></div>
     </div>
-    <!-- Recent -->
     <div id="recent-wrap" class="fade-up-2">
       <div class="section-heading">
         <span class="section-title">Recientes</span>
@@ -717,12 +668,10 @@
   </div>
 </div>
 
-<!-- LIST -->
+<!-- ─── LIST ─────────────────────────────── -->
 <div class="view" id="view-list">
   <div class="container">
-    <div class="section-heading fade-up">
-      <span class="section-title">Todas las Predicas</span>
-    </div>
+    <div class="section-heading fade-up"><span class="section-title">Todas las Predicas</span></div>
     <div class="fade-up-1">
       <div class="search-wrap">
         <svg class="search-icon" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
@@ -730,24 +679,22 @@
       </div>
       <div class="filters-row">
         <input class="filter-date" id="filter-date" type="date" onchange="filterSermons()">
-        <select class="filter-select" id="filter-topic" onchange="filterSermons()">
-          <option value="">Todos los temas</option>
-        </select>
+        <select class="filter-select" id="filter-topic" onchange="filterSermons()"><option value="">Todos los temas</option></select>
       </div>
     </div>
     <div class="cards-grid fade-up-2" id="list-grid"></div>
     <div id="list-empty" class="empty-state" style="display:none;">
       <div class="empty-icon">🔍</div>
       <div class="empty-title">Sin resultados</div>
-      <div class="empty-sub">Intenta con otros filtros o términos de búsqueda.</div>
+      <div class="empty-sub">Prueba otros términos o filtros.</div>
     </div>
   </div>
 </div>
 
-<!-- DETAIL -->
+<!-- ─── DETAIL ───────────────────────────── -->
 <div class="view" id="view-detail">
   <div class="container">
-    <button class="back-btn" id="back-btn" onclick="goBack()">
+    <button class="back-btn" onclick="goBack()">
       <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>
       Volver
     </button>
@@ -755,30 +702,26 @@
   </div>
 </div>
 
-<!-- ADMIN LOGIN -->
+<!-- ─── LOGIN ────────────────────────────── -->
 <div id="view-login">
   <div class="login-card fade-up">
-    <div class="login-icon">
-      <svg width="28" height="28" fill="none" stroke="#C6953B" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+    <div class="login-logo">
+      <img src="https://res.cloudinary.com/duxzwcnfc/image/upload/v1774722585/327288669_1456038698258006_8295051166606127585_n_yczmp8.jpg" alt="Logo">
     </div>
-    <div class="login-title">Acceso Administrador</div>
-    <div class="login-sub">Ingresa la contraseña para continuar</div>
-    <div id="login-error" class="error-box">Contraseña incorrecta. Inténtalo de nuevo.</div>
+    <div class="login-title">Panel Administrador</div>
+    <div class="login-sub">Ingresa tu contraseña para acceder</div>
+    <div id="login-error" class="error-box">Contraseña incorrecta.</div>
     <div class="field">
       <div class="pass-wrap">
-        <input type="password" id="admin-password-input" placeholder="Contraseña" onkeydown="if(event.key==='Enter')doLogin()">
-        <button class="pass-toggle" onclick="togglePass('admin-password-input',this)" type="button">
-          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-        </button>
+        <input type="password" id="admin-pass-input" placeholder="Contraseña" onkeydown="if(event.key==='Enter')doLogin()">
+        <button class="pass-toggle" onclick="togglePass('admin-pass-input',this)" type="button">👁</button>
       </div>
     </div>
-    <button class="btn-primary" style="width:100%;justify-content:center;" onclick="doLogin()">
-      Ingresar
-    </button>
+    <button class="btn-primary" style="width:100%;justify-content:center;padding:13px;" onclick="doLogin()">Ingresar</button>
   </div>
 </div>
 
-<!-- ADMIN -->
+<!-- ─── ADMIN ────────────────────────────── -->
 <div class="view" id="view-admin">
   <div class="container">
     <div class="admin-header fade-up">
@@ -788,29 +731,18 @@
         Salir
       </button>
     </div>
-
-    <!-- Stats -->
     <div class="stats-row fade-up-1">
-      <div class="stat-card">
-        <div class="stat-value" id="stat-total">0</div>
-        <div class="stat-label">Predicas totales</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value" id="stat-topics">0</div>
-        <div class="stat-label">Temas distintos</div>
-      </div>
+      <div class="stat-card"><div class="stat-value" id="stat-total">0</div><div class="stat-label">Predicas</div></div>
+      <div class="stat-card"><div class="stat-value" id="stat-topics">0</div><div class="stat-label">Temas</div></div>
     </div>
-
-    <!-- Tabs -->
     <div class="admin-tabs fade-up-2">
       <button class="admin-tab active" id="tab-sermons-btn" onclick="switchAdminTab('sermons')">Predicas</button>
       <button class="admin-tab" id="tab-settings-btn" onclick="switchAdminTab('settings')">Configuración</button>
     </div>
 
-    <!-- Tab: Sermons -->
     <div class="tab-panel active" id="tab-sermons">
-      <div class="admin-header" style="margin-bottom:14px;">
-        <span style="font-size:13px;color:var(--text-muted);" id="admin-count">0 predicas</span>
+      <div class="admin-header" style="margin-bottom:12px;">
+        <span style="font-size:12px;color:var(--text-muted);" id="admin-count"></span>
         <button class="btn-primary" onclick="openForm()">
           <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           Nueva Predica
@@ -820,54 +752,35 @@
       <div id="admin-empty" class="empty-state" style="display:none;">
         <div class="empty-icon">🎙️</div>
         <div class="empty-title">Sin predicas aún</div>
-        <div class="empty-sub">Agrega la primera predica usando el botón de arriba.</div>
+        <div class="empty-sub">Pulsa "Nueva Predica" para empezar.</div>
       </div>
     </div>
 
-    <!-- Tab: Settings -->
     <div class="tab-panel" id="tab-settings">
       <div class="settings-card">
         <h3>🔐 Cambiar Contraseña</h3>
         <p>Actualiza la contraseña de acceso al panel de administrador.</p>
-        <div id="pass-change-error" class="error-box"></div>
-        <div id="pass-change-success" class="error-box" style="background:rgba(72,187,120,0.12);border-color:rgba(72,187,120,0.3);color:#68D391;"></div>
+        <div id="pass-err"     class="error-box"></div>
+        <div id="pass-success" class="success-box"></div>
         <div class="field">
           <label>Contraseña actual</label>
-          <div class="pass-wrap">
-            <input type="password" id="old-pass" placeholder="Tu contraseña actual">
-            <button class="pass-toggle" onclick="togglePass('old-pass',this)" type="button">
-              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-            </button>
-          </div>
+          <div class="pass-wrap"><input type="password" id="old-pass" placeholder="Tu contraseña actual"><button class="pass-toggle" onclick="togglePass('old-pass',this)" type="button">👁</button></div>
         </div>
         <div class="field">
           <label>Nueva contraseña</label>
-          <div class="pass-wrap">
-            <input type="password" id="new-pass" placeholder="Mínimo 3 caracteres">
-            <button class="pass-toggle" onclick="togglePass('new-pass',this)" type="button">
-              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-            </button>
-          </div>
+          <div class="pass-wrap"><input type="password" id="new-pass" placeholder="Mínimo 3 caracteres"><button class="pass-toggle" onclick="togglePass('new-pass',this)" type="button">👁</button></div>
         </div>
         <div class="field">
           <label>Confirmar nueva contraseña</label>
-          <div class="pass-wrap">
-            <input type="password" id="confirm-pass" placeholder="Repite la nueva contraseña">
-            <button class="pass-toggle" onclick="togglePass('confirm-pass',this)" type="button">
-              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-            </button>
-          </div>
+          <div class="pass-wrap"><input type="password" id="confirm-pass" placeholder="Repite la nueva contraseña"><button class="pass-toggle" onclick="togglePass('confirm-pass',this)" type="button">👁</button></div>
         </div>
-        <button class="btn-primary" style="width:100%;justify-content:center;" onclick="changePassword()">
-          Guardar nueva contraseña
-        </button>
+        <button class="btn-primary" style="width:100%;justify-content:center;" onclick="changePassword()">Guardar contraseña</button>
       </div>
     </div>
-
   </div>
 </div>
 
-<!-- ─── BOTTOM NAV ──────────────────────── -->
+<!-- BOTTOM NAV -->
 <nav id="bottom-nav">
   <button class="nav-btn active" id="nav-home" onclick="switchTab('home')">
     <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
@@ -883,52 +796,45 @@
   </button>
 </nav>
 
-<!-- ─── FORM MODAL ──────────────────────── -->
-<div id="form-modal" style="display:none;" class="modal-overlay" onclick="handleOverlayClick(event,'form-modal')">
+<!-- FORM MODAL -->
+<div id="form-modal" style="display:none;" class="modal-overlay" onclick="handleOvClick(event,'form-modal')">
   <div class="modal-sheet" onclick="event.stopPropagation()">
     <div class="modal-handle"></div>
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;">
-      <h2 class="modal-title" id="form-title" style="margin:0;">Nueva Predica</h2>
-      <button onclick="closeForm()" style="background:none;border:none;cursor:pointer;color:var(--text-muted);padding:4px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+      <h2 class="modal-title" id="form-title">Nueva Predica</h2>
+      <button onclick="closeForm()" style="background:none;border:none;cursor:pointer;color:var(--text-muted);">
         <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
     </div>
     <div id="form-error" class="error-box"></div>
+    <div class="field"><label>Título *</label><input type="text" id="f-title" placeholder="Ej: La fe que mueve montañas"></div>
+    <div class="field"><label>Tema *</label><input type="text" id="f-topic" placeholder="Ej: Fe, Esperanza, Amor…"></div>
+    <div class="field"><label>Fecha *</label><input type="date" id="f-date"></div>
+    <div class="field"><label>Link Google Drive (audio MP3) *</label><input type="url" id="f-drive" placeholder="https://drive.google.com/file/d/…"></div>
+    <div class="field"><label>Material adjunto (URLs separadas por coma)</label><textarea id="f-attach" placeholder="https://drive.google.com/…, https://…"></textarea></div>
     <div class="field">
-      <label>Título *</label>
-      <input type="text" id="f-title" placeholder="Ej: La fe que mueve montañas" required>
+      <label>Fotos de la predica &nbsp;<span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--text-dim);">(la 1ª foto será la portada)</span></label>
+      <div class="photo-upload-area" onclick="document.getElementById('f-photos-input').click()">
+        <input type="file" id="f-photos-input" accept="image/*" multiple onchange="handlePhotoSelect(event)">
+        <div class="photo-upload-icon">🖼️</div>
+        <div class="photo-upload-text">Toca para agregar fotos</div>
+        <div class="photo-upload-hint">JPG · PNG · WEBP — Múltiples fotos permitidas</div>
+      </div>
+      <div class="photo-preview-list" id="photo-preview-list"></div>
     </div>
-    <div class="field">
-      <label>Tema *</label>
-      <input type="text" id="f-topic" placeholder="Ej: Fe, Esperanza, Amor…" required>
-    </div>
-    <div class="field">
-      <label>Fecha *</label>
-      <input type="date" id="f-date" required>
-    </div>
-    <div class="field">
-      <label>Link Google Drive (audio MP3) *</label>
-      <input type="url" id="f-drive" placeholder="https://drive.google.com/file/d/…" required>
-    </div>
-    <div class="field">
-      <label>Material adjunto (URLs separadas por coma)</label>
-      <textarea id="f-attach" placeholder="https://drive.google.com/…, https://otro-link.com/…"></textarea>
-    </div>
-    <button class="btn-primary" style="width:100%;justify-content:center;padding:14px;" id="form-submit-btn" onclick="handleFormSubmit()">
-      Guardar Predica
-    </button>
+    <button class="btn-primary" style="width:100%;justify-content:center;padding:13px;" id="form-submit-btn" onclick="handleFormSubmit()">Guardar Predica</button>
   </div>
 </div>
 
-<!-- ─── DELETE MODAL ────────────────────── -->
-<div id="delete-modal" style="display:none;" class="modal-sm-overlay" onclick="handleOverlayClick(event,'delete-modal')">
+<!-- DELETE MODAL -->
+<div id="delete-modal" style="display:none;" class="modal-sm-overlay" onclick="handleOvClick(event,'delete-modal')">
   <div class="modal-sm" onclick="event.stopPropagation()">
     <div style="text-align:center;">
-      <div style="width:56px;height:56px;background:rgba(229,62,62,0.12);border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
-        <svg width="24" height="24" fill="none" stroke="#E53E3E" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+      <div style="width:52px;height:52px;background:rgba(224,85,85,0.12);border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;">
+        <svg width="22" height="22" fill="none" stroke="#e05555" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/></svg>
       </div>
-      <div style="font-size:17px;font-weight:700;color:var(--text);margin-bottom:8px;">¿Eliminar predica?</div>
-      <div style="font-size:13px;color:var(--text-muted);margin-bottom:24px;">Esta acción no se puede deshacer.</div>
+      <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px;">¿Eliminar predica?</div>
+      <div style="font-size:12px;color:var(--text-muted);margin-bottom:20px;">Esta acción no se puede deshacer.</div>
       <div style="display:flex;gap:10px;">
         <button class="btn-ghost" style="flex:1;justify-content:center;" onclick="closeDeleteModal()">Cancelar</button>
         <button id="confirm-delete-btn" style="flex:1;justify-content:center;background:var(--red);color:white;border:none;border-radius:var(--radius-sm);padding:10px;font-family:var(--font);font-size:13px;font-weight:700;cursor:pointer;" onclick="confirmDelete()">Eliminar</button>
@@ -937,494 +843,464 @@
   </div>
 </div>
 
-<!-- ─── SCRIPT ─────────────────────────── -->
 <script>
-  // ─── STATE ────────────────────────────
-  let allSermons = [];
-  let currentView = 'home';
+  /* STATE */
+  let allSermons   = [];
+  let currentView  = 'home';
   let previousView = 'home';
-  let editingSermon = null;
+  let editingSermon  = null;
   let deletingSermon = null;
   let isAdmin = false;
+  let pendingPhotos  = [];
+  let existingPhotos = [];
+  let lbPhotos = [], lbIndex = 0;
 
-  // ─── STORAGE ──────────────────────────
+  /* STORAGE */
   const DB = {
-    KEY: 'pe_sermons_v2',
-    PASS_KEY: 'pe_admin_pass',
-    getAll() { try { return JSON.parse(localStorage.getItem(this.KEY) || '[]'); } catch { return []; } },
-    save(d) { try { localStorage.setItem(this.KEY, JSON.stringify(d)); return true; } catch { return false; } },
-    add(s) {
-      const id = '_' + Math.random().toString(36).substr(2, 9);
-      const item = { ...s, __id: id, created_at: new Date().toISOString() };
-      const all = this.getAll(); all.push(item); this.save(all); return item;
-    },
-    update(s) {
-      const all = this.getAll(); const i = all.findIndex(x => x.__id === s.__id);
-      if (i >= 0) { all[i] = s; this.save(all); }
-    },
-    delete(id) { this.save(this.getAll().filter(s => s.__id !== id)); },
-    getPass() { return localStorage.getItem(this.PASS_KEY) || '123'; },
-    setPass(p) { localStorage.setItem(this.PASS_KEY, p); }
+    KEY: 'pe_sermons_v3', PASS_KEY: 'pe_admin_pass',
+    getAll()  { try { return JSON.parse(localStorage.getItem(this.KEY)||'[]'); } catch { return []; } },
+    save(d)   { try { localStorage.setItem(this.KEY, JSON.stringify(d)); } catch {} },
+    add(s)    { const id='_'+Math.random().toString(36).substr(2,9); const item={...s,__id:id,created_at:new Date().toISOString()}; const a=this.getAll(); a.push(item); this.save(a); return item; },
+    update(s) { const a=this.getAll(); const i=a.findIndex(x=>x.__id===s.__id); if(i>=0){a[i]=s;this.save(a);} },
+    delete(id){ this.save(this.getAll().filter(s=>s.__id!==id)); },
+    getPass() { return localStorage.getItem(this.PASS_KEY)||'123'; },
+    setPass(p){ localStorage.setItem(this.PASS_KEY,p); }
   };
 
-  // ─── NAVIGATION ───────────────────────
+  /* NAVIGATION */
   function switchTab(tab) {
-    if (tab === 'admin-gate') { handleAdminClick(); return; }
+    if (tab==='admin-gate') { isAdmin ? switchTab('admin') : switchTab('login'); return; }
 
-    const views = ['home','list','detail','admin','login'];
-    views.forEach(v => {
-      const el = document.getElementById('view-' + v);
+    ['home','list','detail','admin','login'].forEach(v => {
+      const el = document.getElementById('view-'+v);
+      if (!el) return;
       el.classList.remove('active');
-      if (v === 'login') el.style.display = 'none';
+      if (v==='login') el.style.display='none';
     });
 
-    const btns = ['home','list','admin'];
-    btns.forEach(b => document.getElementById('nav-' + b)?.classList.remove('active'));
+    ['home','list','admin'].forEach(b => document.getElementById('nav-'+b)?.classList.remove('active'));
 
     previousView = currentView;
-    currentView = tab;
+    currentView  = tab;
 
-    if (tab === 'home') {
-      document.getElementById('view-home').classList.add('active');
-      document.getElementById('nav-home').classList.add('active');
-      renderHome();
-    } else if (tab === 'list') {
-      document.getElementById('view-list').classList.add('active');
-      document.getElementById('nav-list').classList.add('active');
-      populateTopicFilter();
-      filterSermons();
-    } else if (tab === 'detail') {
-      document.getElementById('view-detail').classList.add('active');
-    } else if (tab === 'admin') {
-      document.getElementById('view-admin').classList.add('active');
+    if (tab==='login') {
+      const el=document.getElementById('view-login');
+      el.style.display='flex'; el.classList.add('active');
       document.getElementById('nav-admin').classList.add('active');
-      renderAdminList();
-    } else if (tab === 'login') {
-      document.getElementById('view-login').style.display = 'flex';
-      document.getElementById('view-login').classList.add('active');
-      document.getElementById('nav-admin').classList.add('active');
-      document.getElementById('admin-password-input').value = '';
-      document.getElementById('login-error').style.display = 'none';
-      setTimeout(() => document.getElementById('admin-password-input').focus(), 100);
-    }
-
-    window.scrollTo(0, 0);
-  }
-
-  function goBack() {
-    switchTab(previousView === 'detail' ? 'home' : (previousView || 'home'));
-  }
-
-  // ─── ADMIN AUTH ────────────────────────
-  function handleAdminClick() {
-    if (isAdmin) {
-      switchTab('admin');
+      document.getElementById('admin-pass-input').value='';
+      document.getElementById('login-error').style.display='none';
+      setTimeout(()=>document.getElementById('admin-pass-input').focus(),120);
     } else {
-      switchTab('login');
+      document.getElementById('view-'+tab).classList.add('active');
+      if (tab==='detail') {
+        const prev = previousView==='list'?'list':'home';
+        document.getElementById('nav-'+prev)?.classList.add('active');
+      } else if (['home','list'].includes(tab)) {
+        document.getElementById('nav-'+tab).classList.add('active');
+      } else if (tab==='admin') {
+        document.getElementById('nav-admin').classList.add('active');
+      }
     }
+
+    if (tab==='home')  renderHome();
+    if (tab==='list')  { populateTopicFilter(); filterSermons(); }
+    if (tab==='admin') renderAdminList();
+    window.scrollTo(0,0);
   }
 
+  function goBack() { switchTab(previousView && previousView!=='detail' ? previousView : 'home'); }
+
+  /* AUTH */
   function doLogin() {
-    const val = document.getElementById('admin-password-input').value;
-    if (val === DB.getPass()) {
-      isAdmin = true;
-      document.getElementById('admin-badge').style.display = '';
-      document.getElementById('login-error').style.display = 'none';
+    if (document.getElementById('admin-pass-input').value === DB.getPass()) {
+      isAdmin=true;
+      document.getElementById('admin-badge').style.display='';
       switchTab('admin');
     } else {
-      const err = document.getElementById('login-error');
-      err.style.display = '';
-      document.getElementById('admin-password-input').value = '';
-      document.getElementById('admin-password-input').focus();
+      document.getElementById('login-error').style.display='';
+      document.getElementById('admin-pass-input').value='';
+      document.getElementById('admin-pass-input').focus();
     }
   }
 
   function doLogout() {
-    isAdmin = false;
-    document.getElementById('admin-badge').style.display = 'none';
-    switchTab('home');
-    showToast('Sesión cerrada');
+    isAdmin=false;
+    document.getElementById('admin-badge').style.display='none';
+    switchTab('home'); showToast('Sesión cerrada');
   }
 
   function changePassword() {
-    const oldPass = document.getElementById('old-pass').value;
-    const newPass = document.getElementById('new-pass').value;
-    const confirmPass = document.getElementById('confirm-pass').value;
-    const errEl = document.getElementById('pass-change-error');
-    const successEl = document.getElementById('pass-change-success');
-    errEl.style.display = 'none';
-    successEl.style.display = 'none';
-
-    if (oldPass !== DB.getPass()) {
-      errEl.textContent = 'La contraseña actual no es correcta.';
-      errEl.style.display = '';
-      return;
-    }
-    if (newPass.length < 3) {
-      errEl.textContent = 'La nueva contraseña debe tener al menos 3 caracteres.';
-      errEl.style.display = '';
-      return;
-    }
-    if (newPass !== confirmPass) {
-      errEl.textContent = 'Las contraseñas nuevas no coinciden.';
-      errEl.style.display = '';
-      return;
-    }
-
-    DB.setPass(newPass);
-    document.getElementById('old-pass').value = '';
-    document.getElementById('new-pass').value = '';
-    document.getElementById('confirm-pass').value = '';
-    successEl.textContent = '✓ Contraseña actualizada correctamente.';
-    successEl.style.display = '';
+    const op=document.getElementById('old-pass').value,
+          np=document.getElementById('new-pass').value,
+          cp=document.getElementById('confirm-pass').value;
+    const err=document.getElementById('pass-err'), suc=document.getElementById('pass-success');
+    err.style.display='none'; suc.style.display='none';
+    if (op!==DB.getPass())     { err.textContent='La contraseña actual no es correcta.'; err.style.display=''; return; }
+    if (np.length<3)           { err.textContent='La nueva contraseña debe tener al menos 3 caracteres.'; err.style.display=''; return; }
+    if (np!==cp)               { err.textContent='Las contraseñas nuevas no coinciden.'; err.style.display=''; return; }
+    DB.setPass(np);
+    ['old-pass','new-pass','confirm-pass'].forEach(id=>document.getElementById(id).value='');
+    suc.textContent='✓ Contraseña actualizada correctamente.'; suc.style.display='';
     showToast('Contraseña actualizada');
   }
 
-  function togglePass(inputId, btn) {
-    const inp = document.getElementById(inputId);
-    if (inp.type === 'password') {
-      inp.type = 'text';
-      btn.innerHTML = `<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/></svg>`;
-    } else {
-      inp.type = 'password';
-      btn.innerHTML = `<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`;
-    }
+  function togglePass(id, btn) {
+    const inp=document.getElementById(id);
+    inp.type = inp.type==='password' ? 'text' : 'password';
+    btn.textContent = inp.type==='password' ? '👁' : '🙈';
   }
 
-  // ─── ADMIN TABS ────────────────────────
+  /* ADMIN TABS */
   function switchAdminTab(tab) {
-    ['sermons','settings'].forEach(t => {
-      document.getElementById('tab-' + t).classList.remove('active');
-      document.getElementById('tab-' + t + '-btn').classList.remove('active');
+    ['sermons','settings'].forEach(t=>{
+      document.getElementById('tab-'+t).classList.remove('active');
+      document.getElementById('tab-'+t+'-btn').classList.remove('active');
     });
-    document.getElementById('tab-' + tab).classList.add('active');
-    document.getElementById('tab-' + tab + '-btn').classList.add('active');
+    document.getElementById('tab-'+tab).classList.add('active');
+    document.getElementById('tab-'+tab+'-btn').classList.add('active');
   }
 
-  // ─── HELPERS ──────────────────────────
+  /* HELPERS */
   function formatDate(d) {
     if (!d) return '';
-    try { return new Date(d + 'T12:00:00').toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' }); }
+    try { return new Date(d+'T12:00:00').toLocaleDateString('es-ES',{year:'numeric',month:'long',day:'numeric'}); }
     catch { return d; }
   }
 
-  function getDriveFileId(link) {
+  function getDriveId(link) {
     if (!link) return null;
-    let m = link.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
-    if (m) return m[1];
-    m = link.match(/[?&]id=([a-zA-Z0-9_-]+)/);
-    if (m) return m[1];
-    m = link.match(/\/d\/([a-zA-Z0-9_-]+)/);
-    if (m) return m[1];
+    let m=link.match(/\/file\/d\/([a-zA-Z0-9_-]+)/); if(m) return m[1];
+    m=link.match(/[?&]id=([a-zA-Z0-9_-]+)/);          if(m) return m[1];
+    m=link.match(/\/d\/([a-zA-Z0-9_-]+)/);             if(m) return m[1];
     return null;
   }
 
-  function getDriveEmbed(link) {
+  function getDriveEmbed(link) { const id=getDriveId(link); return id?`https://drive.google.com/file/d/${id}/preview`:link; }
+  function getDriveView(link)  { const id=getDriveId(link); return id?`https://drive.google.com/file/d/${id}/view`:link; }
+
+  function esc(s) { if(!s)return''; const d=document.createElement('div');d.textContent=s;return d.innerHTML; }
+
+  function handleOvClick(e,id) { if(e.target.id===id){id==='form-modal'?closeForm():closeDeleteModal();} }
+
+  /* PHOTO UTILITIES */
+  function fileToBase64(file) {
+    return new Promise((res,rej)=>{ const r=new FileReader(); r.onload=()=>res(r.result); r.onerror=()=>rej(); r.readAsDataURL(file); });
+  }
+
+  async function handlePhotoSelect(evt) {
+    const files=Array.from(evt.target.files);
+    for (const f of files) {
+      try { pendingPhotos.push(await fileToBase64(f)); } catch {}
+    }
+    evt.target.value='';
+    renderPhotoPreview();
+  }
+
+  function renderPhotoPreview() {
+    const all=[...existingPhotos,...pendingPhotos];
+    document.getElementById('photo-preview-list').innerHTML = all.map((src,i)=>`
+      <div class="photo-preview-item ${i===0?'is-cover':''}">
+        <img src="${src}" alt="Foto ${i+1}">
+        <button class="photo-preview-del" onclick="removePhoto(${i})" type="button">✕</button>
+      </div>`).join('');
+  }
+
+  function removePhoto(idx) {
+    const all=[...existingPhotos,...pendingPhotos];
+    all.splice(idx,1);
+    const eLen = existingPhotos.length;
+    existingPhotos = all.slice(0, Math.max(0, idx<eLen ? eLen-1 : eLen));
+    pendingPhotos  = all.slice(existingPhotos.length);
+    renderPhotoPreview();
+  }
+
+  /* LIGHTBOX */
+  function openLightbox(photos, idx) {
+    lbPhotos=photos; lbIndex=idx;
+    document.getElementById('lightbox-img').src=lbPhotos[lbIndex];
+    document.getElementById('lightbox-counter').textContent=`${lbIndex+1} / ${lbPhotos.length}`;
+    document.getElementById('lightbox-nav').style.display=lbPhotos.length>1?'flex':'none';
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow='';
+  }
+
+  function lightboxMove(dir) {
+    lbIndex=(lbIndex+dir+lbPhotos.length)%lbPhotos.length;
+    document.getElementById('lightbox-img').src=lbPhotos[lbIndex];
+    document.getElementById('lightbox-counter').textContent=`${lbIndex+1} / ${lbPhotos.length}`;
+  }
+
+  document.getElementById('lightbox').addEventListener('click', function(e) {
+    if (e.target===this || e.target.id==='lightbox-img') closeLightbox();
+  });
+
+  /* PLAYER HTML */
+  function playerHTML(link, tall, uid) {
     if (!link) return '';
-    const id = getDriveFileId(link);
-    if (id) return `https://drive.google.com/file/d/${id}/preview`;
-    return link;
-  }
-
-  function getDriveViewLink(link) {
-    if (!link) return link;
-    const id = getDriveFileId(link);
-    if (id) return `https://drive.google.com/file/d/${id}/view`;
-    return link;
-  }
-
-  function esc(s) {
-    if (!s) return '';
-    const d = document.createElement('div'); d.textContent = s; return d.innerHTML;
-  }
-
-  function handleOverlayClick(e, modalId) {
-    if (e.target.id === modalId) {
-      if (modalId === 'form-modal') closeForm();
-      if (modalId === 'delete-modal') closeDeleteModal();
-    }
-  }
-
-  // ─── RENDER HOME ──────────────────────
-  function renderHome() {
-    allSermons = DB.getAll().sort((a,b) => new Date(b.date||b.created_at) - new Date(a.date||a.created_at));
-    const featuredWrap = document.getElementById('featured-wrap');
-    const featuredCard = document.getElementById('featured-card');
-    const recentGrid = document.getElementById('recent-grid');
-    const recentWrap = document.getElementById('recent-wrap');
-    const homeEmpty = document.getElementById('home-empty');
-
-    if (allSermons.length === 0) {
-      featuredWrap.style.display = 'none';
-      recentWrap.style.display = 'none';
-      homeEmpty.style.display = '';
-      return;
-    }
-
-    homeEmpty.style.display = 'none';
-    recentWrap.style.display = '';
-
-    const latest = allSermons[0];
-    featuredWrap.style.display = '';
-    featuredCard.innerHTML = `
-      <div>
-        <span class="featured-badge">🎙️ Última predica</span>
+    return `<div class="player-wrap${tall?' tall':''}" id="pw-${uid}">
+      <div class="player-loading" id="pl-${uid}">
+        <div class="player-dot"></div><div class="player-dot"></div><div class="player-dot"></div>
+        <span style="font-size:12px;">Cargando reproductor…</span>
       </div>
-      <div class="featured-body">
-        <div class="featured-topic">${esc(latest.topic)}</div>
-        <div class="featured-title">${esc(latest.title)}</div>
-        <div class="featured-date">📅 ${formatDate(latest.date)}</div>
-        ${latest.drive_link ? `
-        <div class="player-wrap" id="fw-player">
-          <div class="player-loading" id="fw-loading">
-            <div class="player-loading-dot"></div>
-            <div class="player-loading-dot"></div>
-            <div class="player-loading-dot"></div>
-            <span>Cargando reproductor…</span>
-          </div>
-          <iframe
-            src="${getDriveEmbed(latest.drive_link)}"
-            allow="autoplay; encrypted-media; fullscreen"
-            allowfullscreen
-            onload="const l=document.getElementById('fw-loading');if(l)l.style.opacity='0';"
-          ></iframe>
-          <a class="player-open-link" href="${getDriveViewLink(latest.drive_link)}" target="_blank" rel="noopener noreferrer">
-            <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            Abrir en Google Drive
-          </a>
-        </div>` : ''}
-        <button onclick="openDetail('${latest.__id}')" style="display:inline-flex;align-items:center;gap:6px;padding:10px 18px;background:var(--gold-dim);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--gold);font-family:var(--font);font-size:13px;font-weight:600;cursor:pointer;margin-top:4px;">
-          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-          Ver detalle
-        </button>
-      </div>
-    `;
-
-    const recent = allSermons.slice(1, 7);
-    recentGrid.innerHTML = recent.length ? recent.map(s => sermonCardHTML(s)).join('') : '<p style="color:var(--text-muted);font-size:13px;text-align:center;grid-column:1/-1;padding:16px 0;">Solo hay una predica disponible.</p>';
+      <iframe src="${getDriveEmbed(link)}"
+        allow="autoplay; encrypted-media; fullscreen" allowfullscreen
+        onload="const l=document.getElementById('pl-${uid}');if(l)l.style.opacity='0';">
+      </iframe>
+      <a class="player-open-link" href="${getDriveView(link)}" target="_blank" rel="noopener noreferrer">
+        <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Abrir en Google Drive
+      </a>
+    </div>`;
   }
 
-  // ─── SERMON CARD HTML ──────────────────
-  function sermonCardHTML(s) {
-    return `<div class="sermon-card" onclick="openDetail('${s.__id}')">
-      <div class="card-topic">${esc(s.topic)}</div>
-      <div class="card-title">${esc(s.title)}</div>
-      <div class="card-date">
-        <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        ${formatDate(s.date)}
+  /* GALLERY HTML — photos array passed as JSON URL-encoded */
+  function galleryHTML(photos) {
+    if (!photos || !photos.length) return '';
+    const encoded = encodeURIComponent(JSON.stringify(photos));
+    return `<div class="gallery-section">
+      <div class="gallery-label">Fotos de la predica</div>
+      <div class="gallery-scroll">
+        ${photos.map((src,i)=>`
+          <div class="gallery-thumb" onclick="openGallery('${encoded}',${i})">
+            <img src="${src}" alt="Foto ${i+1}" loading="lazy">
+          </div>`).join('')}
       </div>
     </div>`;
   }
 
-  // ─── OPEN DETAIL ──────────────────────
+  function openGallery(encoded, idx) {
+    openLightbox(JSON.parse(decodeURIComponent(encoded)), idx);
+  }
+
+  /* COVER PLACEHOLDER */
+  function coverPH(size) {
+    const s=size==='sm'?'<svg width="24" height="24" fill="none" stroke="rgba(177,165,115,0.22)" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>':'<svg width="36" height="36" fill="none" stroke="rgba(177,165,115,0.22)" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>';
+    return s;
+  }
+
+  /* RENDER HOME */
+  function renderHome() {
+    allSermons=DB.getAll().sort((a,b)=>new Date(b.date||b.created_at)-new Date(a.date||a.created_at));
+    const featWrap=document.getElementById('featured-wrap'),
+          featCard=document.getElementById('featured-card'),
+          recentGrid=document.getElementById('recent-grid'),
+          recentWrap=document.getElementById('recent-wrap'),
+          homeEmpty=document.getElementById('home-empty');
+
+    if (!allSermons.length) {
+      featWrap.style.display='none'; recentWrap.style.display='none'; homeEmpty.style.display='';
+      return;
+    }
+
+    homeEmpty.style.display='none'; recentWrap.style.display='';
+    const latest=allSermons[0];
+    const cover=latest.photos&&latest.photos.length?latest.photos[0]:null;
+    const encoded=encodeURIComponent(JSON.stringify(latest.photos||[]));
+
+    featWrap.style.display='';
+    featCard.innerHTML=`
+      ${cover
+        ? `<img class="featured-cover" src="${cover}" alt="Portada" style="cursor:pointer;" onclick="openGallery('${encoded}',0)">`
+        : `<div class="featured-cover-ph">${coverPH('lg')}</div>`}
+      <div><span class="featured-badge">🎙️ Última predica</span></div>
+      <div class="featured-body">
+        <div class="featured-topic">${esc(latest.topic)}</div>
+        <div class="featured-title">${esc(latest.title)}</div>
+        <div class="featured-date">📅 ${formatDate(latest.date)}</div>
+        ${playerHTML(latest.drive_link, false, 'feat')}
+        ${galleryHTML(latest.photos)}
+        <button onclick="openDetail('${latest.__id}')" style="display:inline-flex;align-items:center;gap:6px;padding:9px 16px;background:var(--accent-dim);border:1px solid var(--border2);border-radius:var(--radius-sm);color:var(--accent);font-family:var(--font);font-size:12px;font-weight:600;cursor:pointer;margin-top:2px;">
+          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          Ver detalle completo
+        </button>
+      </div>`;
+
+    recentGrid.innerHTML = allSermons.slice(1,7).map(s=>sermonCardHTML(s)).join('') ||
+      `<p style="grid-column:1/-1;text-align:center;color:var(--text-muted);font-size:13px;padding:12px 0;">Solo hay una predica disponible.</p>`;
+  }
+
+  /* SERMON CARD */
+  function sermonCardHTML(s) {
+    const cover=s.photos&&s.photos.length?s.photos[0]:null;
+    return `<div class="sermon-card" onclick="openDetail('${s.__id}')">
+      ${cover
+        ? `<img class="card-cover" src="${cover}" alt="${esc(s.title)}" loading="lazy">`
+        : `<div class="card-cover-ph">${coverPH('sm')}</div>`}
+      <div class="card-body">
+        <div class="card-topic">${esc(s.topic)}</div>
+        <div class="card-title">${esc(s.title)}</div>
+        <div class="card-date">
+          <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          ${formatDate(s.date)}
+        </div>
+      </div>
+    </div>`;
+  }
+
+  /* OPEN DETAIL */
   function openDetail(id) {
-    allSermons = DB.getAll().sort((a,b) => new Date(b.date||b.created_at) - new Date(a.date||a.created_at));
-    const s = allSermons.find(x => x.__id === id);
-    if (!s) return;
-    const attachments = s.attachments ? s.attachments.split(',').map(a => a.trim()).filter(Boolean) : [];
-    document.getElementById('detail-content').innerHTML = `
+    allSermons=DB.getAll().sort((a,b)=>new Date(b.date||b.created_at)-new Date(a.date||a.created_at));
+    const s=allSermons.find(x=>x.__id===id); if(!s) return;
+    const cover=s.photos&&s.photos.length?s.photos[0]:null;
+    const attachments=s.attachments?s.attachments.split(',').map(a=>a.trim()).filter(Boolean):[];
+    const encoded=encodeURIComponent(JSON.stringify(s.photos||[]));
+
+    document.getElementById('detail-content').innerHTML=`
       <div class="fade-up">
+        ${cover?`<img class="detail-cover" src="${cover}" alt="Portada" onclick="openGallery('${encoded}',0)">` : ''}
         <div class="detail-topic">${esc(s.topic)}</div>
         <h1 class="detail-title">${esc(s.title)}</h1>
         <div class="detail-meta">📅 ${formatDate(s.date)}</div>
-        ${s.drive_link ? `
-        <div class="player-wrap detail-player" id="dv-player-wrap">
-          <div class="player-loading" id="dv-loading">
-            <div class="player-loading-dot"></div>
-            <div class="player-loading-dot"></div>
-            <div class="player-loading-dot"></div>
-            <span>Cargando reproductor…</span>
-          </div>
-          <iframe
-            src="${getDriveEmbed(s.drive_link)}"
-            allow="autoplay; encrypted-media; fullscreen"
-            allowfullscreen
-            onload="const l=document.getElementById('dv-loading');if(l)l.style.opacity='0';"
-          ></iframe>
-          <a class="player-open-link" href="${getDriveViewLink(s.drive_link)}" target="_blank" rel="noopener noreferrer">
-            <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            Abrir en Google Drive
-          </a>
-        </div>` : ''}
-        ${attachments.length ? `
-        <div class="attachments-section">
-          <div class="attach-label">Material adjunto</div>
-          ${attachments.map((a,i) => `
-            <a href="${esc(a)}" target="_blank" rel="noopener noreferrer" class="attach-link">
-              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
-              Adjunto ${i+1}
-            </a>
-          `).join('')}
-        </div>` : ''}
-      </div>
-    `;
-    previousView = currentView;
+        ${playerHTML(s.drive_link, true, 'det')}
+        ${galleryHTML(s.photos)}
+        ${attachments.length?`
+          <div style="margin-top:4px;">
+            <div class="attach-label">Material adjunto</div>
+            ${attachments.map((a,i)=>`
+              <a href="${esc(a)}" target="_blank" rel="noopener noreferrer" class="attach-link">
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+                Adjunto ${i+1}
+              </a>`).join('')}
+          </div>` : ''}
+      </div>`;
+
+    previousView=currentView;
     switchTab('detail');
   }
 
-  // ─── FILTER SERMONS ────────────────────
+  /* FILTER */
   function filterSermons() {
-    allSermons = DB.getAll().sort((a,b) => new Date(b.date||b.created_at) - new Date(a.date||a.created_at));
-    const q = document.getElementById('search-input').value.toLowerCase();
-    const d = document.getElementById('filter-date').value;
-    const t = document.getElementById('filter-topic').value;
-    let filtered = allSermons.filter(s => {
-      if (q && !(s.title||'').toLowerCase().includes(q) && !(s.topic||'').toLowerCase().includes(q)) return false;
-      if (d && s.date !== d) return false;
-      if (t && s.topic !== t) return false;
+    allSermons=DB.getAll().sort((a,b)=>new Date(b.date||b.created_at)-new Date(a.date||a.created_at));
+    const q=document.getElementById('search-input').value.toLowerCase(),
+          d=document.getElementById('filter-date').value,
+          t=document.getElementById('filter-topic').value;
+    const filtered=allSermons.filter(s=>{
+      if(q&&!(s.title||'').toLowerCase().includes(q)&&!(s.topic||'').toLowerCase().includes(q)) return false;
+      if(d&&s.date!==d) return false;
+      if(t&&s.topic!==t) return false;
       return true;
     });
-    const grid = document.getElementById('list-grid');
-    const empty = document.getElementById('list-empty');
-    if (filtered.length === 0) { grid.innerHTML = ''; empty.style.display = ''; return; }
-    empty.style.display = 'none';
-    grid.innerHTML = filtered.map(s => sermonCardHTML(s)).join('');
+    const grid=document.getElementById('list-grid'), empty=document.getElementById('list-empty');
+    if(!filtered.length){grid.innerHTML='';empty.style.display='';return;}
+    empty.style.display='none';
+    grid.innerHTML=filtered.map(s=>sermonCardHTML(s)).join('');
   }
 
   function populateTopicFilter() {
-    allSermons = DB.getAll().sort((a,b) => new Date(b.date||b.created_at) - new Date(a.date||a.created_at));
-    const topics = [...new Set(allSermons.map(s => s.topic).filter(Boolean))];
-    const sel = document.getElementById('filter-topic');
-    const current = sel.value;
-    sel.innerHTML = '<option value="">Todos los temas</option>' + topics.map(t => `<option value="${esc(t)}" ${t===current?'selected':''}>${esc(t)}</option>`).join('');
+    allSermons=DB.getAll().sort((a,b)=>new Date(b.date||b.created_at)-new Date(a.date||a.created_at));
+    const topics=[...new Set(allSermons.map(s=>s.topic).filter(Boolean))];
+    const sel=document.getElementById('filter-topic'), current=sel.value;
+    sel.innerHTML='<option value="">Todos los temas</option>'+topics.map(t=>`<option value="${esc(t)}" ${t===current?'selected':''}>${esc(t)}</option>`).join('');
   }
 
-  // ─── RENDER ADMIN ──────────────────────
+  /* RENDER ADMIN */
   function renderAdminList() {
-    allSermons = DB.getAll().sort((a,b) => new Date(b.date||b.created_at) - new Date(a.date||a.created_at));
-    const topics = [...new Set(allSermons.map(s => s.topic).filter(Boolean))];
-    document.getElementById('stat-total').textContent = allSermons.length;
-    document.getElementById('stat-topics').textContent = topics.length;
-    document.getElementById('admin-count').textContent = allSermons.length + ' predica' + (allSermons.length !== 1 ? 's' : '');
+    allSermons=DB.getAll().sort((a,b)=>new Date(b.date||b.created_at)-new Date(a.date||a.created_at));
+    const topics=[...new Set(allSermons.map(s=>s.topic).filter(Boolean))];
+    document.getElementById('stat-total').textContent=allSermons.length;
+    document.getElementById('stat-topics').textContent=topics.length;
+    document.getElementById('admin-count').textContent=`${allSermons.length} predica${allSermons.length!==1?'s':''}`;
 
-    const container = document.getElementById('admin-list');
-    const empty = document.getElementById('admin-empty');
-    if (allSermons.length === 0) { container.innerHTML = ''; empty.style.display = ''; return; }
-    empty.style.display = 'none';
-    container.innerHTML = allSermons.map(s => `
-      <div class="admin-item">
+    const container=document.getElementById('admin-list'), empty=document.getElementById('admin-empty');
+    if(!allSermons.length){container.innerHTML='';empty.style.display='';return;}
+    empty.style.display='none';
+    container.innerHTML=allSermons.map(s=>{
+      const cover=s.photos&&s.photos.length?s.photos[0]:null;
+      return `<div class="admin-item">
+        <div class="admin-item-thumb">
+          ${cover?`<img src="${cover}" alt="">`:`${coverPH('sm')}`}
+        </div>
         <div class="admin-item-info">
           <div class="admin-item-title">${esc(s.title)}</div>
           <div class="admin-item-sub">${esc(s.topic)} · ${formatDate(s.date)}</div>
         </div>
         <div class="admin-item-actions">
           <button class="icon-btn edit" onclick="editSermon('${s.__id}')" title="Editar">
-            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
           </button>
           <button class="icon-btn del" onclick="requestDelete('${s.__id}')" title="Eliminar">
-            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg>
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg>
           </button>
         </div>
-      </div>
-    `).join('');
+      </div>`;
+    }).join('');
   }
 
-  // ─── FORM ──────────────────────────────
+  /* FORM */
   function openForm() {
-    editingSermon = null;
-    document.getElementById('form-title').textContent = 'Nueva Predica';
-    document.getElementById('f-title').value = '';
-    document.getElementById('f-topic').value = '';
-    document.getElementById('f-drive').value = '';
-    document.getElementById('f-attach').value = '';
-    document.getElementById('f-date').value = new Date().toISOString().split('T')[0];
-    document.getElementById('form-error').style.display = 'none';
-    document.getElementById('form-modal').style.display = 'flex';
+    editingSermon=null; pendingPhotos=[]; existingPhotos=[];
+    document.getElementById('form-title').textContent='Nueva Predica';
+    ['f-title','f-topic','f-drive','f-attach'].forEach(id=>document.getElementById(id).value='');
+    document.getElementById('f-date').value=new Date().toISOString().split('T')[0];
+    document.getElementById('form-error').style.display='none';
+    document.getElementById('photo-preview-list').innerHTML='';
+    document.getElementById('form-modal').style.display='flex';
   }
 
   function closeForm() {
-    document.getElementById('form-modal').style.display = 'none';
-    editingSermon = null;
+    document.getElementById('form-modal').style.display='none';
+    editingSermon=null; pendingPhotos=[]; existingPhotos=[];
   }
 
   function editSermon(id) {
-    allSermons = DB.getAll();
-    const s = allSermons.find(x => x.__id === id);
-    if (!s) return;
-    editingSermon = s;
-    document.getElementById('form-title').textContent = 'Editar Predica';
-    document.getElementById('f-title').value = s.title || '';
-    document.getElementById('f-topic').value = s.topic || '';
-    document.getElementById('f-date').value = s.date || '';
-    document.getElementById('f-drive').value = s.drive_link || '';
-    document.getElementById('f-attach').value = s.attachments || '';
-    document.getElementById('form-error').style.display = 'none';
-    document.getElementById('form-modal').style.display = 'flex';
+    const s=DB.getAll().find(x=>x.__id===id); if(!s) return;
+    editingSermon=s; pendingPhotos=[]; existingPhotos=[...(s.photos||[])];
+    document.getElementById('form-title').textContent='Editar Predica';
+    document.getElementById('f-title').value=s.title||'';
+    document.getElementById('f-topic').value=s.topic||'';
+    document.getElementById('f-date').value=s.date||'';
+    document.getElementById('f-drive').value=s.drive_link||'';
+    document.getElementById('f-attach').value=s.attachments||'';
+    document.getElementById('form-error').style.display='none';
+    renderPhotoPreview();
+    document.getElementById('form-modal').style.display='flex';
   }
 
   function handleFormSubmit() {
-    const btn = document.getElementById('form-submit-btn');
-    const errEl = document.getElementById('form-error');
-    const title = document.getElementById('f-title').value.trim();
-    const topic = document.getElementById('f-topic').value.trim();
-    const date = document.getElementById('f-date').value;
-    const drive_link = document.getElementById('f-drive').value.trim();
-    const attachments = document.getElementById('f-attach').value.trim();
+    const errEl=document.getElementById('form-error');
+    const title=document.getElementById('f-title').value.trim(),
+          topic=document.getElementById('f-topic').value.trim(),
+          date =document.getElementById('f-date').value,
+          drive=document.getElementById('f-drive').value.trim(),
+          attach=document.getElementById('f-attach').value.trim();
 
-    if (!title || !topic || !date || !drive_link) {
-      errEl.textContent = 'Por favor completa todos los campos obligatorios (*).';
-      errEl.style.display = '';
-      return;
-    }
+    if(!title||!topic||!date||!drive){errEl.textContent='Completa todos los campos obligatorios (*).';errEl.style.display='';return;}
+    if(!editingSermon&&DB.getAll().length>=999){errEl.textContent='Límite de 999 predicas alcanzado.';errEl.style.display='';return;}
 
-    const all = DB.getAll();
-    if (!editingSermon && all.length >= 999) {
-      errEl.textContent = 'Se alcanzó el límite de 999 predicas.';
-      errEl.style.display = '';
-      return;
-    }
+    const photos=[...existingPhotos,...pendingPhotos];
+    const data={title,topic,date,drive_link:drive,attachments:attach,photos,created_at:editingSermon?editingSermon.created_at:new Date().toISOString()};
 
-    const data = { title, topic, date, drive_link, attachments, created_at: editingSermon ? editingSermon.created_at : new Date().toISOString() };
+    if(editingSermon){DB.update({...editingSermon,...data});showToast('Predica actualizada ✓');}
+    else             {DB.add(data);showToast('Predica agregada ✓');}
 
-    if (editingSermon) {
-      DB.update({ ...editingSermon, ...data });
-      showToast('Predica actualizada ✓');
-    } else {
-      DB.add(data);
-      showToast('Predica agregada ✓');
-    }
-
-    closeForm();
-    renderAdminList();
-    renderHome();
+    closeForm(); renderAdminList(); renderHome();
   }
 
-  // ─── DELETE ────────────────────────────
-  function requestDelete(id) {
-    allSermons = DB.getAll();
-    deletingSermon = allSermons.find(x => x.__id === id);
-    if (!deletingSermon) return;
-    document.getElementById('delete-modal').style.display = 'flex';
-  }
-
-  function closeDeleteModal() {
-    document.getElementById('delete-modal').style.display = 'none';
-    deletingSermon = null;
-  }
-
+  /* DELETE */
+  function requestDelete(id) { deletingSermon=DB.getAll().find(x=>x.__id===id); if(deletingSermon) document.getElementById('delete-modal').style.display='flex'; }
+  function closeDeleteModal() { document.getElementById('delete-modal').style.display='none'; deletingSermon=null; }
   function confirmDelete() {
-    if (!deletingSermon) return;
-    DB.delete(deletingSermon.__id);
-    deletingSermon = null;
-    closeDeleteModal();
-    showToast('Predica eliminada');
-    renderAdminList();
-    renderHome();
+    if(!deletingSermon) return;
+    DB.delete(deletingSermon.__id); deletingSermon=null;
+    closeDeleteModal(); showToast('Predica eliminada');
+    renderAdminList(); renderHome();
   }
 
-  // ─── TOAST ────────────────────────────
+  /* TOAST */
   function showToast(msg) {
-    const c = document.getElementById('toast-container');
-    const t = document.createElement('div');
-    t.className = 'toast';
-    t.textContent = msg;
-    c.appendChild(t);
-    setTimeout(() => t.remove(), 3000);
+    const c=document.getElementById('toast-container');
+    const t=document.createElement('div'); t.className='toast'; t.textContent=msg; c.appendChild(t);
+    setTimeout(()=>t.remove(),3000);
   }
 
-  // ─── INIT ─────────────────────────────
-  window.addEventListener('DOMContentLoaded', () => {
-    allSermons = DB.getAll().sort((a,b) => new Date(b.date||b.created_at) - new Date(a.date||a.created_at));
+  /* INIT */
+  window.addEventListener('DOMContentLoaded',()=>{
+    allSermons=DB.getAll().sort((a,b)=>new Date(b.date||b.created_at)-new Date(a.date||a.created_at));
     renderHome();
   });
 </script>
